@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run 3</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Optional: background color */
+        }
+        #flash-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #flash-player {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const ruffle = window.RufflePlayer.newest();
+            const container = document.getElementById("flash-container");
+            const player = ruffle.createPlayer();
+            player.setAttribute('id', 'flash-player');
+            container.appendChild(player);
+            player.load("run3.swf");
+
+            // Adjust the player size on resize
+            window.addEventListener('resize', () => {
+                player.style.width = '100%';
+                player.style.height = '100%';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="flash-container"></div>
+</body>
+</html>
